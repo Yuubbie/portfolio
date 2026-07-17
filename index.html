@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ubong Emmanuel James — Full Stack Web Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black: #080807;
+  --white: #f4f1ea;
+  --accent: #c9a84c;
+  --accent-dim: rgba(201,168,76,0.12);
+  --accent-border: rgba(201,168,76,0.22);
+  --green: #5db87a;
+  --muted: #676259;
+  --card: #0f0f0e;
+  --card2: #141412;
+  --ff-display: 'Syne', sans-serif;
+  --ff-body: 'DM Sans', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--black); color: var(--white); font-family: var(--ff-body); font-size: 16px; line-height: 1.7; overflow-x: hidden; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.1rem 5rem;
+  background: rgba(8,8,7,0.88);
+  backdrop-filter: blur(16px);
+  border-bottom: 0.5px solid var(--accent-border);
+}
+.nav-logo { font-family: var(--ff-display); font-weight: 800; font-size: 1.05rem; color: var(--accent); text-decoration: none; letter-spacing: -0.02em; }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+.nav-links a { color: rgba(244,241,234,0.5); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; }
+.nav-links a:hover { color: var(--accent); }
+.nav-cta { background: var(--accent) !important; color: var(--black) !important; padding: 0.45rem 1.1rem !important; border-radius: 2px; font-weight: 500 !important; }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh; display: flex; align-items: center;
+  padding: 9rem 5rem 5rem;
+  position: relative; overflow: hidden;
+}
+.hero-noise {
+  position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  opacity: 0.4;
+}
+.hero-glow {
+  position: absolute; width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%);
+  top: 50%; left: -100px; transform: translateY(-50%);
+  pointer-events: none;
+}
+.hero-grid {
+  display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 5rem;
+  align-items: center; max-width: 1240px; width: 100%; position: relative; z-index: 1;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 1.75rem;
+}
+.hero-eyebrow::before { content: ''; display: block; width: 1.5rem; height: 0.5px; background: var(--accent); }
+h1 {
+  font-family: var(--ff-display); font-size: clamp(3rem, 5.5vw, 5rem);
+  font-weight: 800; line-height: 1.0; letter-spacing: -0.04em; margin-bottom: 1.75rem;
+}
+h1 em { font-style: normal; color: var(--accent); }
+.hero-desc { font-size: 1rem; color: rgba(244,241,234,0.55); max-width: 500px; margin-bottom: 2.75rem; line-height: 1.9; font-weight: 300; }
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn { display: inline-block; padding: 0.85rem 2rem; font-family: var(--ff-body); font-size: 0.875rem; text-decoration: none; border-radius: 2px; letter-spacing: 0.02em; transition: all 0.2s; font-weight: 500; }
+.btn-gold { background: var(--accent); color: var(--black); }
+.btn-gold:hover { opacity: 0.85; }
+.btn-ghost { border: 0.5px solid rgba(244,241,234,0.25); color: var(--white); }
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+.hero-right { display: flex; flex-direction: column; gap: 1rem; }
+.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+.stat-card {
+  background: var(--card); border: 0.5px solid var(--accent-border);
+  border-radius: 3px; padding: 1.5rem 1.25rem;
+}
+.stat-num { font-family: var(--ff-display); font-size: 2.6rem; font-weight: 800; color: var(--accent); line-height: 1; margin-bottom: 0.3rem; }
+.stat-lbl { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
+.avail-badge {
+  display: flex; align-items: center; gap: 0.75rem;
+  background: rgba(93,184,122,0.08); border: 0.5px solid rgba(93,184,122,0.3);
+  border-radius: 3px; padding: 1rem 1.25rem; font-size: 0.85rem; color: var(--green);
+}
+.pulse { width: 7px; height: 7px; background: var(--green); border-radius: 50%; flex-shrink: 0; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.25} }
+
+/* ── SHARED ── */
+section { padding: 7rem 5rem; }
+.max { max-width: 1240px; margin: 0 auto; }
+.sec-label { display: flex; align-items: center; gap: 0.75rem; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.85rem; }
+.sec-label::before { content: ''; display: block; width: 1.5rem; height: 0.5px; background: var(--accent); }
+.sec-title { font-family: var(--ff-display); font-size: clamp(1.9rem, 3vw, 2.8rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 0.75rem; }
+.sec-sub { color: var(--muted); font-size: 0.95rem; max-width: 500px; margin-bottom: 3.5rem; }
+
+/* ── FEATURED PROJECT (GATHRD) ── */
+#featured { background: var(--card2); }
+.featured-wrap {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+}
+.featured-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--accent-dim); border: 0.5px solid var(--accent-border);
+  color: var(--accent); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+  padding: 0.3rem 0.85rem; border-radius: 2px; margin-bottom: 1.5rem;
+}
+.featured-name { font-family: var(--ff-display); font-size: clamp(2.4rem, 4vw, 3.6rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 0.5rem; }
+.featured-name span { color: var(--accent); }
+.featured-tagline { font-size: 0.8rem; color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1.5rem; }
+.featured-desc { color: rgba(244,241,234,0.6); font-size: 0.975rem; line-height: 1.85; margin-bottom: 2rem; font-weight: 300; }
+.featured-modules { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 2.5rem; }
+.module-pill {
+  background: var(--card); border: 0.5px solid var(--accent-border);
+  border-radius: 2px; padding: 0.4rem 0.75rem;
+  font-size: 0.75rem; color: rgba(244,241,234,0.65);
+  display: flex; align-items: center; gap: 0.4rem;
+}
+.module-pill::before { content: ''; display: block; width: 4px; height: 4px; background: var(--accent); border-radius: 50%; opacity: 0.7; flex-shrink: 0; }
+.featured-right {
+  background: var(--card); border: 0.5px solid var(--accent-border);
+  border-radius: 6px; overflow: hidden;
+}
+.featured-screen-top {
+  background: #1a1917; padding: 0.75rem 1rem;
+  display: flex; align-items: center; gap: 0.5rem;
+  border-bottom: 0.5px solid var(--accent-border);
+}
+.dot-r { width: 8px; height: 8px; border-radius: 50%; }
+.featured-screen-body { padding: 2rem; }
+.screen-url { font-size: 0.72rem; color: var(--muted); font-family: monospace; flex: 1; text-align: center; }
+.feature-list { display: flex; flex-direction: column; gap: 0.85rem; }
+.feature-row { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 1rem; background: var(--black); border-radius: 3px; border: 0.5px solid rgba(201,168,76,0.1); }
+.feature-row-left { font-size: 0.8rem; color: rgba(244,241,234,0.7); }
+.feature-row-right { font-size: 0.72rem; color: var(--accent); font-weight: 500; }
+.featured-cta { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+/* ── PROJECTS ── */
+#projects { background: var(--black); }
+.projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--accent-border); border: 0.5px solid var(--accent-border); }
+.proj-card {
+  background: var(--card); padding: 2.25rem 2rem;
+  display: flex; flex-direction: column;
+  transition: background 0.3s;
+  position: relative; overflow: hidden;
+}
+.proj-card:hover { background: var(--card2); }
+.proj-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: var(--accent); transform: scaleX(0); transform-origin: left;
+  transition: transform 0.3s;
+}
+.proj-card:hover::after { transform: scaleX(1); }
+.proj-num { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.25rem; }
+.proj-icon { font-size: 1.75rem; margin-bottom: 1rem; }
+.proj-name { font-family: var(--ff-display); font-size: 1.2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.3rem; }
+.proj-role { font-size: 0.7rem; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.85rem; }
+.proj-desc { font-size: 0.85rem; color: rgba(244,241,234,0.5); line-height: 1.75; margin-bottom: 1.5rem; flex: 1; font-weight: 300; }
+.proj-stack { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.5rem; }
+.pill { background: var(--accent-dim); border: 0.5px solid var(--accent-border); color: rgba(201,168,76,0.85); padding: 0.2rem 0.55rem; border-radius: 2px; font-size: 0.68rem; letter-spacing: 0.04em; }
+.proj-link { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.75rem; color: rgba(244,241,234,0.45); text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; margin-top: auto; width: fit-content; }
+.proj-link:hover { color: var(--accent); }
+.proj-link svg { width: 10px; height: 10px; }
+
+/* GOVT PROJECT CARD */
+.proj-card.govt { background: linear-gradient(135deg, #0f0f0e 0%, #0d1008 100%); }
+.govt-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: rgba(93,184,122,0.1); border: 0.5px solid rgba(93,184,122,0.3); color: var(--green); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 2px; margin-bottom: 0.85rem; width: fit-content; }
+
+/* ── ABOUT ── */
+#about { background: var(--card2); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
+.about-p { color: rgba(244,241,234,0.6); font-size: 0.975rem; line-height: 1.9; margin-bottom: 1.25rem; font-weight: 300; }
+.about-p strong { color: var(--white); font-weight: 500; }
+.skills-wrap { display: flex; flex-direction: column; gap: 1.75rem; }
+.skill-group-title { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.6rem; }
+.skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.stag { background: var(--card); border: 0.5px solid var(--accent-border); color: rgba(244,241,234,0.7); padding: 0.3rem 0.75rem; border-radius: 2px; font-size: 0.78rem; }
+.stag.hi { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
+
+/* ── SERVICES ── */
+#services { background: var(--black); }
+.svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--accent-border); border: 0.5px solid var(--accent-border); }
+.svc-item { background: var(--card); padding: 2.5rem 2rem; transition: background 0.3s; }
+.svc-item:hover { background: var(--card2); }
+.svc-n { font-family: var(--ff-display); font-size: 2.5rem; font-weight: 800; color: rgba(201,168,76,0.1); line-height: 1; margin-bottom: 1rem; }
+.svc-name { font-family: var(--ff-display); font-size: 1rem; font-weight: 700; margin-bottom: 0.6rem; }
+.svc-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
+
+/* ── CONTACT ── */
+#contact { background: var(--card2); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
+.contact-info { display: flex; flex-direction: column; gap: 1.25rem; margin-top: 2rem; }
+.ci-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+.ci-val { font-size: 0.9rem; color: var(--white); text-decoration: none; }
+.ci-val:hover { color: var(--accent); }
+.form-fields { display: flex; flex-direction: column; gap: 0.9rem; }
+.form-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+.fg { display: flex; flex-direction: column; gap: 0.35rem; }
+label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+input, textarea { background: var(--card); border: 0.5px solid var(--accent-border); border-radius: 2px; color: var(--white); padding: 0.8rem 1rem; font-family: var(--ff-body); font-size: 0.875rem; outline: none; transition: border-color 0.2s; resize: none; width: 100%; }
+input:focus, textarea:focus { border-color: var(--accent); }
+textarea { min-height: 120px; }
+.submit { background: var(--accent); color: var(--black); border: none; padding: 0.9rem 2.25rem; font-family: var(--ff-body); font-weight: 500; font-size: 0.875rem; border-radius: 2px; cursor: pointer; transition: opacity 0.2s; letter-spacing: 0.02em; align-self: flex-start; }
+.submit:hover { opacity: 0.85; }
+
+/* ── FOOTER ── */
+footer { background: #050504; border-top: 0.5px solid var(--accent-border); padding: 2rem 5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.footer-logo { font-family: var(--ff-display); font-weight: 800; color: var(--accent); font-size: 1rem; letter-spacing: -0.02em; }
+.footer-links { display: flex; gap: 2rem; list-style: none; }
+.footer-links a { color: var(--muted); text-decoration: none; font-size: 0.78rem; transition: color 0.2s; }
+.footer-links a:hover { color: var(--accent); }
+.footer-copy { font-size: 0.72rem; color: var(--muted); }
+
+/* ── ANIMATIONS ── */
+.fade { opacity: 0; transform: translateY(20px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.fade.on { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  section { padding: 4.5rem 1.5rem; }
+  #hero { padding: 7rem 1.5rem 3.5rem; }
+  .hero-grid, .featured-wrap, .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .projects-grid, .svc-grid { grid-template-columns: 1fr; }
+  footer { padding: 1.5rem; flex-direction: column; align-items: flex-start; }
+  .featured-modules { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#hero">UEJ.</a>
+  <ul class="nav-links">
+    <li><a href="#featured">Flagship</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="https://www.linkedin.com/in/ubong-emmanuel-james-ab485510b/" target="_blank" class="nav-cta">LinkedIn</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-noise"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-grid max">
+    <div>
+      <div class="hero-eyebrow">Available for Remote Work Worldwide</div>
+      <h1>Building<br>the web.<br><em>Securing</em> it<br>too.</h1>
+      <p class="hero-desc">Full Stack Web Developer based in Abuja, Nigeria. 10+ live production platforms delivered for real businesses — from federal government ministries to SaaS products to e-commerce stores.</p>
+      <div class="hero-btns">
+        <a href="#featured" class="btn btn-gold">See My Work</a>
+        <a href="#contact" class="btn btn-ghost">Let's Talk</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="stats-grid">
+        <div class="stat-card fade">
+          <div class="stat-num">13+</div>
+          <div class="stat-lbl">Live Production Sites</div>
+        </div>
+        <div class="stat-card fade">
+          <div class="stat-num">5+</div>
+          <div class="stat-lbl">Years Experience</div>
+        </div>
+        <div class="stat-card fade">
+          <div class="stat-num">FG</div>
+          <div class="stat-lbl">Federal Gov. Client</div>
+        </div>
+        <div class="stat-card fade">
+          <div class="stat-num">SaaS</div>
+          <div class="stat-lbl">Founder, Gathrd</div>
+        </div>
+      </div>
+      <div class="avail-badge fade">
+        <span class="pulse"></span>
+        Open to freelance, contract and full-time remote roles
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED: GATHRD -->
+<section id="featured">
+  <div class="max">
+    <div class="sec-label">Flagship Product</div>
+    <div class="featured-wrap">
+      <div>
+        <div class="featured-badge">&#9733; Product of the Year &nbsp; Founder &amp; Builder</div>
+        <div class="featured-name">Gathrd<span>.</span></div>
+        <div class="featured-tagline">Church Operating System for Nigeria</div>
+        <p class="featured-desc">
+          Gathrd is a full-featured SaaS platform built specifically for Nigerian churches of all denominations and sizes. It replaces scattered WhatsApp groups, manual registers, and paper envelopes with one unified system that handles every administrative function a church actually needs.
+        </p>
+        <p class="featured-desc">
+          From attendance tracking via QR code and WhatsApp, to member management, tithe records, event coordination, and group communication — Gathrd is the operating system underneath the ministry. Built with React, Supabase, Paystack, Termii, and WhatsApp as the primary notification channel.
+        </p>
+        <div class="featured-modules">
+          <div class="module-pill">Attendance Tracking</div>
+          <div class="module-pill">Member Management</div>
+          <div class="module-pill">Tithe and Giving Records</div>
+          <div class="module-pill">Event Coordination</div>
+          <div class="module-pill">WhatsApp Notifications</div>
+          <div class="module-pill">QR Code Check-in</div>
+          <div class="module-pill">Group Communication</div>
+          <div class="module-pill">Naira Pricing / Paystack</div>
+        </div>
+        <div class="featured-cta">
+          <a href="https://gathrd-xi.vercel.app" target="_blank" class="btn btn-gold">Visit Gathrd</a>
+          <a href="#contact" class="btn btn-ghost">Partner With Me</a>
+        </div>
+      </div>
+      <div class="featured-right fade">
+        <div class="featured-screen-top">
+          <span class="dot-r" style="background:#ff5f57"></span>
+          <span class="dot-r" style="background:#febc2e"></span>
+          <span class="dot-r" style="background:#28c840"></span>
+          <span class="screen-url">gathrd-xi.vercel.app</span>
+        </div>
+        <div class="featured-screen-body">
+          <div class="feature-list">
+            <div class="feature-row">
+              <span class="feature-row-left">22+ Core Modules</span>
+              <span class="feature-row-right">Fully Integrated</span>
+            </div>
+            <div class="feature-row">
+              <span class="feature-row-left">Attendance via WhatsApp</span>
+              <span class="feature-row-right">Auto-updates</span>
+            </div>
+            <div class="feature-row">
+              <span class="feature-row-left">Payments</span>
+              <span class="feature-row-right">Paystack / Naira</span>
+            </div>
+            <div class="feature-row">
+              <span class="feature-row-left">Database</span>
+              <span class="feature-row-right">Supabase + RLS</span>
+            </div>
+            <div class="feature-row">
+              <span class="feature-row-left">Notifications</span>
+              <span class="feature-row-right">WhatsApp + Termii</span>
+            </div>
+            <div class="feature-row">
+              <span class="feature-row-left">Frontend</span>
+              <span class="feature-row-right">React + Vercel</span>
+            </div>
+            <div class="feature-row">
+              <span class="feature-row-left">Target</span>
+              <span class="feature-row-right">All Nigerian Churches</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="max">
+    <div class="sec-label">Work</div>
+    <h2 class="sec-title">Live Projects</h2>
+    <p class="sec-sub">Every project below is live, maintained, and built for real clients with real users.</p>
+
+    <div class="projects-grid">
+
+      <!-- FMWA -->
+      <div class="proj-card govt fade">
+        <div class="proj-num">01</div>
+        <div class="govt-badge">&#9679; Federal Government of Nigeria</div>
+        <div class="proj-icon">🏛️</div>
+        <div class="proj-name">FMWA Situation Room</div>
+        <div class="proj-role">Full Stack Developer</div>
+        <p class="proj-desc">Full institutional platform for the Federal Ministry of Women Affairs. Features a live Situation Room with real-time field updates, GIS mapping across all 36 states and FCT, policy publications, leadership profiles, and an anonymous tip reporting system. Designed and developed end-to-end under Yubbie Pen and Pixel.</p>
+        <div class="proj-stack">
+          <span class="pill">React</span>
+          <span class="pill">Supabase</span>
+          <span class="pill">GIS Mapping</span>
+          <span class="pill">Real-time Data</span>
+          <span class="pill">Vercel</span>
+        </div>
+        <a href="https://fmwa-situation-room.vercel.app" target="_blank" class="proj-link">
+          View Live <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1V8"/></svg>
+        </a>
+      </div>
+
+      <!-- UBORA -->
+      <div class="proj-card fade">
+        <div class="proj-num">02</div>
+        <div class="proj-icon">🎓</div>
+        <div class="proj-name">Ubora World</div>
+        <div class="proj-role">Full Stack Developer</div>
+        <p class="proj-desc">EdTech SaaS platform for Nigerian students preparing for NOUN, WAEC, NECO, and JAMB. Provides CBT practice simulators, past questions organized by faculty, course summaries, and tutorial videos — all on a single subscription, optimized for mobile, delivered one semester at a time.</p>
+        <div class="proj-stack">
+          <span class="pill">React</span>
+          <span class="pill">Node.js</span>
+          <span class="pill">CBT Engine</span>
+          <span class="pill">Auth</span>
+          <span class="pill">Vercel</span>
+        </div>
+        <a href="https://ubora-world.vercel.app" target="_blank" class="proj-link">
+          View Live <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1V8"/></svg>
+        </a>
+      </div>
+
+      <!-- ROM HOUSE STARLINK -->
+      <div class="proj-card fade">
+        <div class="proj-num">03</div>
+        <div class="proj-icon">📡</div>
+        <div class="proj-name">Rom House — Starlink Retailer</div>
+        <div class="proj-role">Full Stack Developer</div>
+        <p class="proj-desc">Custom platform for Starlink product distribution across multiple countries. Handles product listings, multi-region pricing logic, and customer request management — built from scratch with a React frontend and Node.js backend.</p>
+        <div class="proj-stack">
+          <span class="pill">React.js</span>
+          <span class="pill">Node.js</span>
+          <span class="pill">REST APIs</span>
+          <span class="pill">CSS3</span>
+        </div>
+        <a href="https://starlink.romhousenetwork.com/" target="_blank" class="proj-link">
+          View Live <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1V8"/></svg>
+        </a>
+      </div>
+
+      <!-- PAACO -->
+      <div class="proj-card fade">
+        <div class="proj-num">04</div>
+        <div class="proj-icon">📊</div>
+        <div class="proj-name">PAACO — Chartered Accountants</div>
+        <div class="proj-role">Full Stack Developer</div>
+        <p class="proj-desc">Corporate website for a 20+ year old chartered accounting firm with offices in Abuja and Ibadan. Built with Next.js for speed and SEO. Features full service listings, team profiles, and contact infrastructure.</p>
+        <div class="proj-stack">
+          <span class="pill">Next.js</span>
+          <span class="pill">React</span>
+          <span class="pill">SEO</span>
+        </div>
+        <a href="https://paaco.net" target="_blank" class="proj-link">
+          View Live <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1V8"/></svg>
+        </a>
+      </div>
+
+      <!-- I-COFFEE -->
+      <div class="proj-card fade">
+        <div class="proj-num">05</div>
+        <div class="proj-icon">☕</div>
+        <div class="proj-name">I-Coffee Nigeria</div>
+        <div class="proj-role">Full Stack Developer</div>
+        <p class="proj-desc">Full-featured e-commerce store for coffee products across Nigeria. Built with proper SEO, Cloudinary media management, fast delivery UX, and a complete product catalogue from beans to espresso machines.</p>
+        <div class="proj-stack">
+          <span class="pill">E-commerce</span>
+          <span class="pill">Node.js</span>
+          <span class="pill">Cloudinary</span>
+          <span class="pill">SEO</span>
+        </div>
+        <a href="https://i-coffee.ng" target="_blank" class="proj-link">
+          View Live <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1V8"/></svg>
+        </a>
+      </div>
+
+      <!-- SHEPHERD COURT -->
+      <div class="proj-card fade">
+        <div class="proj-num">06</div>
+        <div class="proj-icon">📚</div>
+        <div class="proj-name">Shepherd Court Publishing</div>
+        <div class="proj-role">Full Stack Developer</div>
+        <p class="proj-desc">Publishing house platform for book sales, ISBN management, research support, and author services. Built with React and Node.js, featuring a clean editorial interface and REST API integration.</p>
+        <div class="proj-stack">
+          <span class="pill">React.js</span>
+          <span class="pill">Node.js</span>
+          <span class="pill">REST APIs</span>
+        </div>
+        <a href="https://yuubbie.github.io/Sheperd-Court/" target="_blank" class="proj-link">
+          View Live <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1V8"/></svg>
+        </a>
+      </div>
+
+      <!-- BARBYHANS -->
+      <div class="proj-card fade">
+        <div class="proj-num">07</div>
+        <div class="proj-icon">👶</div>
+        <div class="proj-name">Barbyhans — Children's Fashion</div>
+        <div class="proj-role">Full Stack Developer</div>
+        <p class="proj-desc">E-commerce platform for baby and kids clothing and shoes. Complete shopping experience with product categories, cart, customer accounts, and a mobile-first responsive design built on WooCommerce.</p>
+        <div class="proj-stack">
+          <span class="pill">WordPress</span>
+          <span class="pill">WooCommerce</span>
+          <span class="pill">Elementor</span>
+          <span class="pill">PHP</span>
+        </div>
+        <a href="https://www.barbyhans.com" target="_blank" class="proj-link">
+          View Live <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1V8"/></svg>
+        </a>
+      </div>
+
+      <!-- ROM HOUSE HOTEL -->
+      <div class="proj-card fade">
+        <div class="proj-num">08</div>
+        <div class="proj-icon">🏨</div>
+        <div class="proj-name">Rom House Hotel</div>
+        <div class="proj-role">Full Stack Developer</div>
+        <p class="proj-desc">Hospitality platform handling room listings, availability, bookings, and customer contact. Clean, professional presentation with booking plugin integration and custom CSS styling throughout.</p>
+        <div class="proj-stack">
+          <span class="pill">WordPress</span>
+          <span class="pill">Booking Plugin</span>
+          <span class="pill">PHP</span>
+          <span class="pill">Custom CSS</span>
+        </div>
+        <a href="https://www.hotel.romhousenetwork.com" target="_blank" class="proj-link">
+          View Live <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1V8"/></svg>
+        </a>
+      </div>
+
+      <!-- JESSICA ORLA -->
+      <div class="proj-card fade">
+        <div class="proj-num">09</div>
+        <div class="proj-icon">👗</div>
+        <div class="proj-name">Jessica Orla — Fashion Brand</div>
+        <div class="proj-role">Full Stack Developer</div>
+        <p class="proj-desc">Fashion brand website featuring collections, lookbooks, and order management. Responsive and brand-aligned design with WooCommerce powering the full shopping experience.</p>
+        <div class="proj-stack">
+          <span class="pill">WordPress</span>
+          <span class="pill">WooCommerce</span>
+          <span class="pill">Elementor</span>
+        </div>
+        <a href="https://jessicaorla.cgsmodel.com/" target="_blank" class="proj-link">
+          View Live <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1V8"/></svg>
+        </a>
+      </div>
+
+      <!-- LFF ALL NATIONS TABERNACLE -->
+      <div class="proj-card fade">
+        <div class="proj-num">10</div>
+        <div class="proj-icon">⛪</div>
+        <div class="proj-name">LFF All Nations Tabernacle</div>
+        <div class="proj-role">Full Stack Developer</div>
+        <p class="proj-desc">Full-stack church website with a Firebase Firestore database backend, real-time admin dashboard, Firebase Authentication, prayer request system, giving confirmation, visitor registration, SEO optimisation, and Google Business Profile integration. Indexed on Google the same day it launched.</p>
+        <div class="proj-stack">
+          <span class="pill">HTML5</span>
+          <span class="pill">CSS3</span>
+          <span class="pill">JavaScript</span>
+          <span class="pill">Firebase</span>
+          <span class="pill">Firestore</span>
+          <span class="pill">SEO</span>
+        </div>
+        <a href="https://lffallnationstabernacle.org" target="_blank" class="proj-link">
+          View Live <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1V8"/></svg>
+        </a>
+      </div>
+
+      <!-- VICTORIA'S TOUCH ENTERPRISE -->
+      <div class="proj-card fade">
+        <div class="proj-num">11</div>
+        <div class="proj-icon">📷</div>
+        <div class="proj-name">Victoria's Touch Enterprise</div>
+        <div class="proj-role">Full Stack Developer</div>
+        <p class="proj-desc">Premium event planning, photography, and content creation website for a creative business in Abuja. Features wedding packages, service tabs, a full gallery, and comprehensive SEO — built to turn visitors into booked clients.</p>
+        <div class="proj-stack">
+          <span class="pill">HTML5</span>
+          <span class="pill">CSS3</span>
+          <span class="pill">JavaScript</span>
+          <span class="pill">SEO</span>
+          <span class="pill">Vercel</span>
+        </div>
+        <a href="https://victoriastouchenterprise.vercel.app" target="_blank" class="proj-link">
+          View Live <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1V8"/></svg>
+        </a>
+      </div>
+
+      <!-- MOTIAC LUXURY HOMES -->
+      <div class="proj-card fade">
+        <div class="proj-num">12</div>
+        <div class="proj-icon">🏠</div>
+        <div class="proj-name">Motiac Luxury Homes</div>
+        <div class="proj-role">Full Stack Developer</div>
+        <p class="proj-desc">Premium real estate website for a luxury property company in Abuja. Full property listings with pricing, location filters, and FCDA-approved estate showcases — designed to reflect the prestige of the brand and convert serious buyers.</p>
+        <div class="proj-stack">
+          <span class="pill">HTML5</span>
+          <span class="pill">CSS3</span>
+          <span class="pill">JavaScript</span>
+          <span class="pill">SEO</span>
+          <span class="pill">Vercel</span>
+        </div>
+        <a href="https://motiacluxuryhomes.vercel.app" target="_blank" class="proj-link">
+          View Live <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1V8"/></svg>
+        </a>
+      </div>
+
+      <!-- OCEAN WEALTH MUSIC STORE -->
+      <div class="proj-card fade">
+        <div class="proj-num">13</div>
+        <div class="proj-icon">🎼</div>
+        <div class="proj-name">Ocean Wealth Music Store</div>
+        <div class="proj-role">Full Stack Developer</div>
+        <p class="proj-desc">E-commerce style platform for a musical equipment store. Clean product showcase built for a smooth browsing and shopping experience, with mobile-first design and fast load performance throughout.</p>
+        <div class="proj-stack">
+          <span class="pill">HTML5</span>
+          <span class="pill">CSS3</span>
+          <span class="pill">JavaScript</span>
+          <span class="pill">Vercel</span>
+        </div>
+        <a href="https://oceanwealthmusicstore.vercel.app" target="_blank" class="proj-link">
+          View Live <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1V8"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="max">
+    <div class="sec-label">About</div>
+    <div class="about-grid">
+      <div>
+        <h2 class="sec-title">The developer<br>who ships.</h2>
+        <p class="about-p" style="margin-top:1.5rem;">I am <strong>Ubong Emmanuel James</strong>, a Full Stack Web Developer based in Abuja, Nigeria. I design, build, deploy, and maintain web platforms end-to-end — from the first wireframe to a live, production-grade server.</p>
+        <p class="about-p">I have delivered platforms across federal government, SaaS, e-commerce, finance, hospitality, fashion, and publishing. Each one built custom for the client's real operational needs.</p>
+        <p class="about-p">What makes me different is my background in cybersecurity. Currently completing a <strong>BSc in Cybersecurity at Miva University</strong>, I approach every project with security built in from day one — secure API design, data protection practices, and risk-aware architecture most web developers simply never consider.</p>
+        <p class="about-p">I am available for remote freelance projects, part-time contracts, and full-time remote roles worldwide.</p>
+        <div style="margin-top:2rem;">
+          <a href="#contact" class="btn btn-gold">Work With Me</a>
+        </div>
+      </div>
+      <div class="skills-wrap">
+        <div>
+          <div class="skill-group-title">Frontend</div>
+          <div class="skill-tags">
+            <span class="stag hi">React.js</span>
+            <span class="stag hi">JavaScript</span>
+            <span class="stag">HTML5</span>
+            <span class="stag">CSS3</span>
+            <span class="stag">Responsive Design</span>
+          </div>
+        </div>
+        <div>
+          <div class="skill-group-title">Backend</div>
+          <div class="skill-tags">
+            <span class="stag hi">Node.js</span>
+            <span class="stag hi">PHP</span>
+            <span class="stag">REST APIs</span>
+            <span class="stag">Supabase</span>
+            <span class="stag">MySQL</span>
+            <span class="stag">Python</span>
+          </div>
+        </div>
+        <div>
+          <div class="skill-group-title">Platforms and Tools</div>
+          <div class="skill-tags">
+            <span class="stag hi">WordPress</span>
+            <span class="stag hi">WooCommerce</span>
+            <span class="stag">Vercel</span>
+            <span class="stag">Git and GitHub</span>
+            <span class="stag">Paystack</span>
+            <span class="stag">Cloudinary</span>
+          </div>
+        </div>
+        <div>
+          <div class="skill-group-title">Additional</div>
+          <div class="skill-tags">
+            <span class="stag">Cybersecurity</span>
+            <span class="stag">GIS Integration</span>
+            <span class="stag">Copywriting</span>
+            <span class="stag">Technical VA</span>
+            <span class="stag">Digital Operations</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="max">
+    <div class="sec-label">Services</div>
+    <h2 class="sec-title">What I Build</h2>
+    <p class="sec-sub">End-to-end web development across industries, platforms, and complexity levels.</p>
+    <div class="svc-grid">
+      <div class="svc-item fade">
+        <div class="svc-n">01</div>
+        <div class="svc-name">Custom Web Development</div>
+        <div class="svc-desc">React, Node.js, PHP, HTML/CSS — built from scratch to match exact requirements. No bloated templates. Clean, fast, maintainable code.</div>
+      </div>
+      <div class="svc-item fade">
+        <div class="svc-n">02</div>
+        <div class="svc-name">SaaS Products</div>
+        <div class="svc-desc">Full product development from architecture to launch. Auth systems, dashboards, subscriptions, APIs, and deployment pipelines.</div>
+      </div>
+      <div class="svc-item fade">
+        <div class="svc-n">03</div>
+        <div class="svc-name">Government and Institutional Platforms</div>
+        <div class="svc-desc">Serious platforms for serious clients. Real-time data systems, GIS integrations, situation rooms, and public-facing institutional portals.</div>
+      </div>
+      <div class="svc-item fade">
+        <div class="svc-n">04</div>
+        <div class="svc-name">E-commerce Stores</div>
+        <div class="svc-desc">WooCommerce and custom PHP stores with payment integration, product management, inventory, and full admin dashboards.</div>
+      </div>
+      <div class="svc-item fade">
+        <div class="svc-n">05</div>
+        <div class="svc-name">WordPress Development</div>
+        <div class="svc-desc">Custom themes, Elementor builds, plugin integration, and performance optimization for WordPress-powered projects of any size.</div>
+      </div>
+      <div class="svc-item fade">
+        <div class="svc-n">06</div>
+        <div class="svc-name">Security-Conscious Development</div>
+        <div class="svc-desc">Secure API design, data protection practices, Row Level Security, and cybersecurity-aware architecture baked into every build.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="max">
+    <div class="sec-label">Contact</div>
+    <div class="contact-grid">
+      <div>
+        <h2 class="sec-title">Let's work<br>together.</h2>
+        <p style="color:var(--muted); margin-top:1rem; max-width:380px; line-height:1.85; font-size:0.95rem; font-weight:300;">Available for remote freelance projects, part-time contracts, and full-time roles worldwide. Response within 24 hours.</p>
+        <div class="contact-info">
+          <div>
+            <div class="ci-label">Location</div>
+            <span class="ci-val">Abuja, FCT, Nigeria</span>
+          </div>
+          <div>
+            <div class="ci-label">Email</div>
+            <a href="mailto:yuubbiepenandpixel@gmail.com" class="ci-val">yuubbiepenandpixel@gmail.com</a>
+          </div>
+          <div>
+            <div class="ci-label">WhatsApp</div>
+            <a href="https://wa.me/2347032352158?text=Hi%20Ubong%2C%20I%20visited%20your%20portfolio%20and%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" class="ci-val">+234 703 235 2158</a>
+          </div>
+          <div>
+            <div class="ci-label">LinkedIn</div>
+            <a href="https://www.linkedin.com/in/ubong-emmanuel-james-ab485510b/" target="_blank" class="ci-val">ubong-emmanuel-james</a>
+          </div>
+          <div>
+            <div class="ci-label">GitHub</div>
+            <a href="https://github.com/Yuubbie" target="_blank" class="ci-val">github.com/Yuubbie</a>
+          </div>
+          <div>
+            <div class="ci-label">Availability</div>
+            <span class="ci-val" style="color:var(--green);">Open to opportunities</span>
+          </div>
+        </div>
+      </div>
+      <div class="form-fields">
+        <div class="form-row2">
+          <div class="fg"><label for="fn">First Name</label><input type="text" id="fn" placeholder="Ada"></div>
+          <div class="fg"><label for="ln">Last Name</label><input type="text" id="ln" placeholder="Okonkwo"></div>
+        </div>
+        <div class="fg"><label for="em">Email</label><input type="email" id="em" placeholder="ada@company.com"></div>
+        <div class="fg"><label for="sb">Subject</label><input type="text" id="sb" placeholder="Project enquiry / Collaboration / Hiring"></div>
+        <div class="fg"><label for="ms">Message</label><textarea id="ms" placeholder="Tell me about your project or role..."></textarea></div>
+        <button class="submit" onclick="handleContact()">Send Message &rarr;</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">UEJ.</span>
+  <ul class="footer-links">
+    <li><a href="#featured">Gathrd</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="https://www.linkedin.com/in/ubong-emmanuel-james-ab485510b/" target="_blank">LinkedIn</a></li>
+    <li><a href="https://github.com/Yuubbie" target="_blank">GitHub</a></li>
+  </ul>
+  <span class="footer-copy">&copy; 2025 Ubong Emmanuel James &middot; Yubbie Pen &amp; Pixel</span>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade').forEach((el, i) => {
+  el.style.transitionDelay = (i % 4 * 0.1) + 's';
+  obs.observe(el);
+});
+
+function handleContact() {
+  const n = document.getElementById('fn').value;
+  const e = document.getElementById('em').value;
+  const m = document.getElementById('ms').value;
+  if (!n || !e || !m) { alert('Please fill in your name, email, and message.'); return; }
+  const s = document.getElementById('sb').value || 'Portfolio enquiry';
+  window.location.href = `mailto:ubongemmanuel.james@gmail.com?subject=${encodeURIComponent(s)}&body=${encodeURIComponent('Hi Ubong,\n\n' + m + '\n\n— ' + n)}`;
+}
+</script>
+</body>
+</html>
