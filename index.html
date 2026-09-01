@@ -293,7 +293,7 @@ footer { background: #0d0d0c; border-top: 0.5px solid var(--accent-border); padd
   <ul class="nav-links">
     <li><a href="#featured">Flagship</a></li>
     <li><a href="#projects">Projects</a></li>
-    <li><a href="#github">GitHub</a></li>
+    <li><a href="#github">More Work</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -620,14 +620,91 @@ footer { background: #0d0d0c; border-top: 0.5px solid var(--accent-border); padd
   </div>
 </section>
 
-<!-- GITHUB REPOS -->
+<!-- OTHER PROJECTS -->
 <section id="github">
   <div class="max">
-    <div class="sec-label">Open Source</div>
-    <h2 class="sec-title">More on GitHub</h2>
-    <p class="sec-sub">Additional repos and experiments, pulled straight from my GitHub.</p>
-    <div class="gh-grid" id="gh-grid">
-      <div class="gh-loading">Loading repositories...</div>
+    <div class="sec-label">More Work</div>
+    <h2 class="sec-title">My Other Projects</h2>
+    <p class="sec-sub">A few more platforms and brands I've built and manage.</p>
+    <div class="projects-grid">
+
+      <!-- DAYMARK -->
+      <div class="proj-card fade">
+        <div class="proj-num">01</div>
+        <div class="proj-icon">🏫</div>
+        <div class="proj-name">Daymark</div>
+        <div class="proj-role">Full Stack Developer</div>
+        <p class="proj-desc">A school management system that handles the day to day running of a school, from student records to administrative work, all in one place.</p>
+        <div class="proj-stack">
+          <span class="pill">School Management</span>
+          <span class="pill">SaaS</span>
+        </div>
+        <a href="https://daymaark.com" target="_blank" class="proj-link">
+          View Live <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1V8"/></svg>
+        </a>
+      </div>
+
+      <!-- FRAMANLILY -->
+      <div class="proj-card fade">
+        <div class="proj-num">02</div>
+        <div class="proj-icon">🏢</div>
+        <div class="proj-name">Framanlily</div>
+        <div class="proj-role">Full Stack Developer</div>
+        <p class="proj-desc">A real estate company with its own management system, Framanlily Admin, built to run property listings and day to day operations for the business.</p>
+        <div class="proj-stack">
+          <span class="pill">Real Estate</span>
+          <span class="pill">Admin Dashboard</span>
+        </div>
+        <a href="https://framanlily.vercel.app" target="_blank" class="proj-link">
+          View Live <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1V8"/></svg>
+        </a>
+      </div>
+
+      <!-- FARM2POT -->
+      <div class="proj-card fade">
+        <div class="proj-num">03</div>
+        <div class="proj-icon">🍽️</div>
+        <div class="proj-name">Farm2Pot</div>
+        <div class="proj-role">Full Stack Developer</div>
+        <p class="proj-desc">A luxury Nigerian restaurant in Lagos, serving a full menu of Nigerian dishes and grills, with an online presence built to match the dining experience.</p>
+        <div class="proj-stack">
+          <span class="pill">Restaurant</span>
+          <span class="pill">Food and Grills</span>
+        </div>
+        <a href="https://farm2pot.vercel.app" target="_blank" class="proj-link">
+          View Live <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1V8"/></svg>
+        </a>
+      </div>
+
+      <!-- DRINKUPZOBO -->
+      <div class="proj-card fade">
+        <div class="proj-num">04</div>
+        <div class="proj-icon">🥂</div>
+        <div class="proj-name">Drinkupzobo</div>
+        <div class="proj-role">Full Stack Developer</div>
+        <p class="proj-desc">A luxury drink and pastry brand, with a platform built to showcase and sell its premium beverages and pastries.</p>
+        <div class="proj-stack">
+          <span class="pill">Beverages</span>
+          <span class="pill">Pastries</span>
+        </div>
+        <a href="https://drinkupzobo.com" target="_blank" class="proj-link">
+          View Live <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1V8"/></svg>
+        </a>
+      </div>
+
+      <!-- KIIIBI -->
+      <div class="proj-card fade">
+        <div class="proj-num">05</div>
+        <div class="proj-icon">🧴</div>
+        <div class="proj-name">Kiiibi</div>
+        <div class="proj-role">Full Stack Developer</div>
+        <p class="proj-desc">A luxury skincare brand, with a platform built to present and sell its premium skincare line.</p>
+        <div class="proj-stack">
+          <span class="pill">Skincare</span>
+          <span class="pill">E-commerce</span>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -855,25 +932,6 @@ function handleContact() {
   const s = document.getElementById('sb').value || 'Portfolio enquiry';
   window.location.href = `mailto:ubongemmanuel.james@gmail.com?subject=${encodeURIComponent(s)}&body=${encodeURIComponent('Hi Ubong,\n\n' + m + '\n\n, ' + n)}`;
 }
-
-fetch('projects.json')
-  .then(res => res.json())
-  .then(repos => {
-    const grid = document.getElementById('gh-grid');
-    grid.innerHTML = repos.slice(0, 12).map(r => `
-      <div class="gh-card">
-        <a href="${r.url}" target="_blank" class="gh-name">${r.name}</a>
-        <p class="gh-desc">${r.description || 'No description provided.'}</p>
-        <div class="gh-meta">
-          <span class="gh-lang"><span class="gh-dot"></span>${r.language || 'N/A'}</span>
-          <span>&#9733; ${r.stars}</span>
-        </div>
-      </div>
-    `).join('');
-  })
-  .catch(() => {
-    document.getElementById('gh-grid').innerHTML = '<div class="gh-loading">Unable to load repositories.</div>';
-  });
 </script>
 </body>
 </html>
