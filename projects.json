@@ -1,19 +1,57 @@
 [
   {
-    "name": "farm2pot",
-    "description": "farm2pot And Gril",
-    "url": "https://github.com/Yuubbie/farm2pot",
+    "name": "Hopayola",
+    "description": "A bespoke fashion coordination platform for the Nigerian market, bridging clients and vetted artisans. Features milestone-based job tracking, secure held payouts, an AI design studio, and nationwide logistics integration.",
+    "url": "https://hopayola.com",
     "language": "TypeScript",
+    "stack": ["Next.js (App Router)", "React", "TypeScript", "Tailwind CSS", "Supabase", "Paystack", "Resend", "Vercel"],
     "stars": 0,
-    "updated": "2026-08-31T10:56:13Z"
+    "updated": "2026-10-31T00:00:00Z"
   },
   {
-    "name": "daymark",
-    "description": null,
+    "name": "Gathrd",
+    "description": "A multi-tenant SaaS platform tailored for church administration. Delivers role-based access control, automated subscription billing, and an isolated PostgreSQL data architecture for secure community management.",
+    "url": "https://gathrd.com.ng",
+    "language": "TypeScript",
+    "stack": ["React", "Vite", "TypeScript", "Tailwind CSS", "Supabase (Edge Functions, RLS)", "Vercel", "Paystack"],
+    "stars": 0,
+    "updated": "2026-10-31T00:00:00Z"
+  },
+  {
+    "name": "Daymark",
+    "description": "A comprehensive Progressive Web App (PWA) operating system for educational institutions. Streamlines attendance, CBT examinations, HR rosters, financial management, and reporting into a unified, installable interface.",
     "url": "https://github.com/Yuubbie/daymark",
     "language": "TypeScript",
+    "stack": ["React 19", "Vite 8", "TypeScript", "Tailwind 4", "React Router 7", "Supabase (Postgres + RLS)", "PWA"],
     "stars": 0,
-    "updated": "2026-08-31T07:58:10Z"
+    "updated": "2026-10-31T00:00:00Z"
+  },
+  {
+    "name": "Ubora World",
+    "description": "A mobile-first EdTech platform delivering timed CBT practice, AI-powered tutoring, and automated study materials. Architected to accelerate exam preparation for university and high school students.",
+    "url": "https://uboraworld.com.ng",
+    "language": "TypeScript",
+    "stack": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Prisma", "PostgreSQL (Neon)", "NextAuth", "Paystack"],
+    "stars": 0,
+    "updated": "2026-10-31T00:00:00Z"
+  },
+  {
+    "name": "Digital Forensics Data Recovery",
+    "description": "A technical case study demonstrating forensically sound USB drive acquisition, strict chain-of-custody protocols, cryptographic hash verification, and advanced artifact carving.",
+    "url": "https://github.com/Yuubbie/digital-forensics-capstone",
+    "language": "Cybersecurity",
+    "stack": ["Autopsy", "FTK Imager", "Cybersecurity", "Data Carving"],
+    "stars": 0,
+    "updated": "2026-10-31T00:00:00Z"
+  },
+  {
+    "name": "Farm2Pot & Grill",
+    "description": "A 24/7 Nigerian kitchen and grill in Ajah, Lagos, with a production ordering platform covering 100+ dishes, online checkout, pickup and delivery, and a live menu backed by Supabase.",
+    "url": "https://farm2pot.com.ng",
+    "language": "TypeScript",
+    "stack": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Supabase", "Paystack", "PWA", "Vercel"],
+    "stars": 0,
+    "updated": "2026-10-31T00:00:00Z"
   },
   {
     "name": "framanlily",

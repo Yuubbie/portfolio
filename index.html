@@ -169,10 +169,40 @@ section { padding: 7rem 5rem; }
 .proj-role { font-size: 0.7rem; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.85rem; }
 .proj-desc { font-size: 0.85rem; color: rgba(244,241,234,0.5); line-height: 1.75; margin-bottom: 1.5rem; flex: 1; font-weight: 300; }
 .proj-stack { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.5rem; }
-.pill { background: var(--accent-dim); border: 0.5px solid var(--accent-border); color: rgba(201,168,76,0.85); padding: 0.2rem 0.55rem; border-radius: 2px; font-size: 0.68rem; letter-spacing: 0.04em; }
+.pill { background: var(--accent-dim); border: 0.5px solid var(--accent-border); color: var(--accent); padding: 0.28rem 0.7rem; border-radius: 2px; font-size: 0.75rem; letter-spacing: 0.03em; font-weight: 500; }
 .proj-link { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.75rem; color: rgba(244,241,234,0.45); text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.2s; margin-top: auto; width: fit-content; }
 .proj-link:hover { color: var(--accent); }
 .proj-link svg { width: 10px; height: 10px; }
+
+.proj-mark {
+  width: 2.55rem; height: 2.55rem;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--accent-dim);
+  border: 0.5px solid var(--accent-border);
+  border-radius: 3px;
+  font-family: var(--ff-display);
+  font-weight: 800;
+  font-size: 0.82rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  letter-spacing: -0.03em;
+}
+.priority-tag {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: var(--accent-dim); border: 0.5px solid var(--accent-border);
+  color: var(--accent); font-size: 0.62rem; letter-spacing: 0.12em;
+  text-transform: uppercase; padding: 0.18rem 0.55rem; border-radius: 2px;
+  margin-bottom: 0.85rem; width: fit-content;
+}
+.proj-card.priority { background: linear-gradient(180deg, #1c1a16 0%, var(--card) 58%); }
+.proj-card.case-study { background: linear-gradient(135deg, #0f0f0e 0%, #120d10 100%); }
+.case-badge {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  background: rgba(201,168,76,0.1); border: 0.5px solid var(--accent-border);
+  color: var(--accent); font-size: 0.65rem; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 2px;
+  margin-bottom: 0.85rem; width: fit-content;
+}
 
 /* GOVT PROJECT CARD */
 .proj-card.govt { background: linear-gradient(135deg, #0f0f0e 0%, #0d1008 100%); }
@@ -350,25 +380,25 @@ footer { background: #0d0d0c; border-top: 0.5px solid var(--accent-border); padd
       <div>
         <div class="featured-badge">&#9733; Product of the Year &nbsp; Founder &amp; Builder</div>
         <div class="featured-name">Gathrd<span>.</span></div>
-        <div class="featured-tagline">Church Operating System for Nigeria</div>
+        <div class="featured-tagline">Multi-tenant Church Administration SaaS</div>
         <p class="featured-desc">
-          Gathrd is a full-featured SaaS platform built specifically for Nigerian churches of all denominations and sizes. It replaces scattered WhatsApp groups, manual registers, and paper envelopes with one unified system that handles every administrative function a church actually needs.
+          Gathrd is a multi-tenant SaaS platform tailored for church administration. It delivers role-based access control, automated subscription billing, and an isolated PostgreSQL data architecture for secure community management.
         </p>
         <p class="featured-desc">
-          From attendance tracking via QR code and WhatsApp, to member management, tithe records, event coordination, and group communication, Gathrd is the operating system underneath the ministry. Built with React, Supabase, Paystack, Termii, and WhatsApp as the primary notification channel.
+          From attendance tracking via QR code and WhatsApp, to member management, tithe records, event coordination, and group communication, Gathrd is the operating system underneath the ministry. Built with React, Vite, TypeScript, Tailwind CSS, Supabase (Edge Functions, RLS), Vercel, and Paystack.
         </p>
         <div class="featured-modules">
-          <div class="module-pill">Attendance Tracking</div>
-          <div class="module-pill">Member Management</div>
-          <div class="module-pill">Tithe and Giving Records</div>
-          <div class="module-pill">Event Coordination</div>
+          <div class="module-pill">React + TypeScript</div>
+          <div class="module-pill">Vite + Tailwind CSS</div>
+          <div class="module-pill">Role-Based Access Control</div>
+          <div class="module-pill">Isolated PostgreSQL</div>
+          <div class="module-pill">Supabase RLS</div>
+          <div class="module-pill">Edge Functions</div>
+          <div class="module-pill">Paystack Billing</div>
           <div class="module-pill">WhatsApp Notifications</div>
-          <div class="module-pill">QR Code Check-in</div>
-          <div class="module-pill">Group Communication</div>
-          <div class="module-pill">Naira Pricing / Paystack</div>
         </div>
         <div class="featured-cta">
-          <a href="https://gathrd-xi.vercel.app" target="_blank" class="btn btn-gold">Visit Gathrd</a>
+          <a href="https://gathrd.com.ng" target="_blank" class="btn btn-gold">Visit Gathrd</a>
           <a href="#contact" class="btn btn-ghost">Partner With Me</a>
         </div>
       </div>
@@ -377,7 +407,7 @@ footer { background: #0d0d0c; border-top: 0.5px solid var(--accent-border); padd
           <span class="dot-r" style="background:#ff5f57"></span>
           <span class="dot-r" style="background:#febc2e"></span>
           <span class="dot-r" style="background:#28c840"></span>
-          <span class="screen-url">gathrd-xi.vercel.app</span>
+          <span class="screen-url">gathrd.com.ng</span>
         </div>
         <div class="featured-screen-body">
           <div class="feature-list">
@@ -403,7 +433,7 @@ footer { background: #0d0d0c; border-top: 0.5px solid var(--accent-border); padd
             </div>
             <div class="feature-row">
               <span class="feature-row-left">Frontend</span>
-              <span class="feature-row-right">React + Vercel</span>
+              <span class="feature-row-right">React + Vite + TypeScript</span>
             </div>
             <div class="feature-row">
               <span class="feature-row-left">Target</span>
@@ -425,9 +455,143 @@ footer { background: #0d0d0c; border-top: 0.5px solid var(--accent-border); padd
 
     <div class="projects-grid">
 
+      <!-- HOPAYOLA -->
+      <div class="proj-card priority fade">
+        <div class="proj-num">01</div>
+        <div class="priority-tag">Featured</div>
+        <div class="proj-mark">HP</div>
+        <div class="proj-name">Hopayola</div>
+        <div class="proj-role">Full Stack Developer</div>
+        <p class="proj-desc">A bespoke fashion coordination platform for the Nigerian market, bridging clients and vetted artisans. Features milestone-based job tracking, secure held payouts, an AI design studio, and nationwide logistics integration.</p>
+        <div class="proj-stack">
+          <span class="pill">Next.js App Router</span>
+          <span class="pill">React</span>
+          <span class="pill">TypeScript</span>
+          <span class="pill">Tailwind CSS</span>
+          <span class="pill">Supabase</span>
+          <span class="pill">Paystack</span>
+          <span class="pill">Resend</span>
+          <span class="pill">Vercel</span>
+        </div>
+        <a href="https://hopayola.com" target="_blank" class="proj-link">
+          View Live <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1V8"/></svg>
+        </a>
+      </div>
+
+      <!-- GATHRD -->
+      <div class="proj-card priority fade">
+        <div class="proj-num">02</div>
+        <div class="priority-tag">Featured</div>
+        <div class="proj-mark">GT</div>
+        <div class="proj-name">Gathrd</div>
+        <div class="proj-role">Founder &amp; Full Stack Developer</div>
+        <p class="proj-desc">A multi-tenant SaaS platform tailored for church administration. Delivers role-based access control, automated subscription billing, and an isolated PostgreSQL data architecture for secure community management.</p>
+        <div class="proj-stack">
+          <span class="pill">React</span>
+          <span class="pill">Vite</span>
+          <span class="pill">TypeScript</span>
+          <span class="pill">Tailwind CSS</span>
+          <span class="pill">Supabase</span>
+          <span class="pill">Edge Functions</span>
+          <span class="pill">RLS</span>
+          <span class="pill">Vercel</span>
+          <span class="pill">Paystack</span>
+        </div>
+        <a href="https://gathrd.com.ng" target="_blank" class="proj-link">
+          View Live <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1V8"/></svg>
+        </a>
+      </div>
+
+      <!-- DAYMARK -->
+      <div class="proj-card priority fade">
+        <div class="proj-num">03</div>
+        <div class="priority-tag">Featured</div>
+        <div class="proj-mark">DM</div>
+        <div class="proj-name">Daymark</div>
+        <div class="proj-role">Full Stack Developer</div>
+        <p class="proj-desc">A comprehensive Progressive Web App (PWA) operating system for educational institutions. Streamlines attendance, CBT examinations, HR rosters, financial management, and reporting into a unified, installable interface.</p>
+        <div class="proj-stack">
+          <span class="pill">React 19</span>
+          <span class="pill">Vite 8</span>
+          <span class="pill">TypeScript</span>
+          <span class="pill">Tailwind 4</span>
+          <span class="pill">React Router 7</span>
+          <span class="pill">Supabase</span>
+          <span class="pill">PostgreSQL</span>
+          <span class="pill">RLS</span>
+          <span class="pill">PWA</span>
+        </div>
+      </div>
+
+      <!-- UBORA WORLD -->
+      <div class="proj-card priority fade">
+        <div class="proj-num">04</div>
+        <div class="priority-tag">Featured</div>
+        <div class="proj-mark">UW</div>
+        <div class="proj-name">Ubora World</div>
+        <div class="proj-role">Full Stack Developer</div>
+        <p class="proj-desc">A mobile-first EdTech platform delivering timed CBT practice, AI-powered tutoring, and automated study materials. Architected to accelerate exam preparation for university and high school students.</p>
+        <div class="proj-stack">
+          <span class="pill">Next.js</span>
+          <span class="pill">React</span>
+          <span class="pill">TypeScript</span>
+          <span class="pill">Tailwind CSS</span>
+          <span class="pill">Prisma</span>
+          <span class="pill">PostgreSQL</span>
+          <span class="pill">Neon</span>
+          <span class="pill">NextAuth</span>
+          <span class="pill">Paystack</span>
+        </div>
+        <a href="https://uboraworld.com.ng" target="_blank" class="proj-link">
+          View Live <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1V8"/></svg>
+        </a>
+      </div>
+
+      <!-- DIGITAL FORENSICS -->
+      <div class="proj-card case-study fade">
+        <div class="proj-num">05</div>
+        <div class="case-badge">Case Study</div>
+        <div class="proj-mark">DF</div>
+        <div class="proj-name">Digital Forensics Data Recovery</div>
+        <div class="proj-role">Cybersecurity Analyst</div>
+        <p class="proj-desc">A technical case study demonstrating forensically sound USB drive acquisition, strict chain-of-custody protocols, cryptographic hash verification, and advanced artifact carving.</p>
+        <div class="proj-stack">
+          <span class="pill">Autopsy</span>
+          <span class="pill">FTK Imager</span>
+          <span class="pill">Cybersecurity</span>
+          <span class="pill">Data Carving</span>
+        </div>
+        <a href="https://github.com/Yuubbie/digital-forensics-capstone" target="_blank" class="proj-link">
+          View Case Study <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1V8"/></svg>
+        </a>
+      </div>
+
+      <!-- FARM2POT -->
+      <div class="proj-card priority fade">
+        <div class="proj-num">06</div>
+        <div class="priority-tag">Featured</div>
+        <div class="proj-mark">F2</div>
+        <div class="proj-name">Farm2Pot &amp; Grill</div>
+        <div class="proj-role">Full Stack Developer</div>
+        <p class="proj-desc">A 24/7 Nigerian kitchen and grill in Ajah, Lagos, with a production ordering platform covering 100+ dishes, online checkout, pickup and delivery, and a live menu backed by Supabase. Built as a TypeScript Next.js PWA for the brand behind every Sunday soup pot and Friday-night cocktail.</p>
+        <div class="proj-stack">
+          <span class="pill">Next.js</span>
+          <span class="pill">React</span>
+          <span class="pill">TypeScript</span>
+          <span class="pill">Tailwind CSS</span>
+          <span class="pill">Supabase</span>
+          <span class="pill">Paystack</span>
+          <span class="pill">PWA</span>
+          <span class="pill">Vercel</span>
+        </div>
+        <a href="https://farm2pot.com.ng" target="_blank" class="proj-link">
+          View Live <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1V8"/></svg>
+        </a>
+      </div>
+
       <!-- FMWA -->
       <div class="proj-card govt fade">
-        <div class="proj-num">01</div>
+        <div class="proj-num">07</div>
         <div class="govt-badge">&#9679; Federal Government of Nigeria</div>
         <div class="proj-icon">🏛️</div>
         <div class="proj-name">FMWA Situation Room</div>
@@ -445,30 +609,9 @@ footer { background: #0d0d0c; border-top: 0.5px solid var(--accent-border); padd
         </a>
       </div>
 
-      <!-- UBORA -->
-      <div class="proj-card fade">
-        <div class="proj-num">02</div>
-        <div class="proj-icon">🎓</div>
-        <div class="proj-name">Ubora World</div>
-        <div class="proj-role">Full Stack Developer</div>
-        <p class="proj-desc">EdTech SaaS platform for Nigerian students preparing for NOUN, WAEC, NECO, and JAMB. Provides CBT practice simulators, past questions organized by faculty, course summaries, and tutorial videos, all on a single subscription, optimized for mobile, delivered one semester at a time.</p>
-        <div class="proj-stack">
-          <span class="pill">React</span>
-          <span class="pill">Node.js</span>
-          <span class="pill">CBT Engine</span>
-          <span class="pill">Auth</span>
-          <span class="pill">Vercel</span>
-        </div>
-        <a href="https://ubora-world.vercel.app" target="_blank" class="proj-link">
-          View Live <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1V8"/></svg>
-        </a>
-      </div>
-
-
-
       <!-- PAACO -->
       <div class="proj-card fade">
-        <div class="proj-num">04</div>
+        <div class="proj-num">08</div>
         <div class="proj-icon">📊</div>
         <div class="proj-name">PAACO, Chartered Accountants</div>
         <div class="proj-role">Full Stack Developer</div>
@@ -485,7 +628,7 @@ footer { background: #0d0d0c; border-top: 0.5px solid var(--accent-border); padd
 
       <!-- I-COFFEE -->
       <div class="proj-card fade">
-        <div class="proj-num">05</div>
+        <div class="proj-num">09</div>
         <div class="proj-icon">☕</div>
         <div class="proj-name">I-Coffee Nigeria</div>
         <div class="proj-role">Full Stack Developer</div>
@@ -503,7 +646,7 @@ footer { background: #0d0d0c; border-top: 0.5px solid var(--accent-border); padd
 
       <!-- SHEPHERD COURT -->
       <div class="proj-card fade">
-        <div class="proj-num">06</div>
+        <div class="proj-num">10</div>
         <div class="proj-icon">📚</div>
         <div class="proj-name">Shepherd Court Publishing</div>
         <div class="proj-role">Full Stack Developer</div>
@@ -520,7 +663,7 @@ footer { background: #0d0d0c; border-top: 0.5px solid var(--accent-border); padd
 
       <!-- BARBYHANS -->
       <div class="proj-card fade">
-        <div class="proj-num">07</div>
+        <div class="proj-num">11</div>
         <div class="proj-icon">👶</div>
         <div class="proj-name">Barbyhans, Children's Fashion</div>
         <div class="proj-role">Full Stack Developer</div>
@@ -542,7 +685,7 @@ footer { background: #0d0d0c; border-top: 0.5px solid var(--accent-border); padd
 
       <!-- LFF ALL NATIONS TABERNACLE -->
       <div class="proj-card fade">
-        <div class="proj-num">10</div>
+        <div class="proj-num">12</div>
         <div class="proj-icon">⛪</div>
         <div class="proj-name">LFF All Nations Tabernacle</div>
         <div class="proj-role">Full Stack Developer</div>
@@ -562,7 +705,7 @@ footer { background: #0d0d0c; border-top: 0.5px solid var(--accent-border); padd
 
       <!-- VICTORIA'S TOUCH ENTERPRISE -->
       <div class="proj-card fade">
-        <div class="proj-num">11</div>
+        <div class="proj-num">13</div>
         <div class="proj-icon">📷</div>
         <div class="proj-name">Victoria's Touch Enterprise</div>
         <div class="proj-role">Full Stack Developer</div>
@@ -581,7 +724,7 @@ footer { background: #0d0d0c; border-top: 0.5px solid var(--accent-border); padd
 
       <!-- MOTIAC LUXURY HOMES -->
       <div class="proj-card fade">
-        <div class="proj-num">12</div>
+        <div class="proj-num">14</div>
         <div class="proj-icon">🏠</div>
         <div class="proj-name">Motiac Luxury Homes</div>
         <div class="proj-role">Full Stack Developer</div>
@@ -600,7 +743,7 @@ footer { background: #0d0d0c; border-top: 0.5px solid var(--accent-border); padd
 
       <!-- OCEAN WEALTH MUSIC STORE -->
       <div class="proj-card fade">
-        <div class="proj-num">13</div>
+        <div class="proj-num">15</div>
         <div class="proj-icon">🎼</div>
         <div class="proj-name">Ocean Wealth Music Store</div>
         <div class="proj-role">Full Stack Developer</div>
@@ -628,25 +771,9 @@ footer { background: #0d0d0c; border-top: 0.5px solid var(--accent-border); padd
     <p class="sec-sub">A few more platforms and brands I've built and manage.</p>
     <div class="projects-grid">
 
-      <!-- DAYMARK -->
-      <div class="proj-card fade">
-        <div class="proj-num">01</div>
-        <div class="proj-icon">🏫</div>
-        <div class="proj-name">Daymark</div>
-        <div class="proj-role">Full Stack Developer</div>
-        <p class="proj-desc">A school management system that handles the day to day running of a school, from student records to administrative work, all in one place.</p>
-        <div class="proj-stack">
-          <span class="pill">School Management</span>
-          <span class="pill">SaaS</span>
-        </div>
-        <a href="https://daymaark.com" target="_blank" class="proj-link">
-          View Live <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1V8"/></svg>
-        </a>
-      </div>
-
       <!-- FRAMANLILY -->
       <div class="proj-card fade">
-        <div class="proj-num">02</div>
+        <div class="proj-num">01</div>
         <div class="proj-icon">🏢</div>
         <div class="proj-name">Framanlily</div>
         <div class="proj-role">Full Stack Developer</div>
@@ -660,25 +787,9 @@ footer { background: #0d0d0c; border-top: 0.5px solid var(--accent-border); padd
         </a>
       </div>
 
-      <!-- FARM2POT -->
-      <div class="proj-card fade">
-        <div class="proj-num">03</div>
-        <div class="proj-icon">🍽️</div>
-        <div class="proj-name">Farm2Pot</div>
-        <div class="proj-role">Full Stack Developer</div>
-        <p class="proj-desc">A luxury Nigerian restaurant in Lagos, serving a full menu of Nigerian dishes and grills, with an online presence built to match the dining experience.</p>
-        <div class="proj-stack">
-          <span class="pill">Restaurant</span>
-          <span class="pill">Food and Grills</span>
-        </div>
-        <a href="https://farm2pot.vercel.app" target="_blank" class="proj-link">
-          View Live <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1V8"/></svg>
-        </a>
-      </div>
-
       <!-- DRINKUPZOBO -->
       <div class="proj-card fade">
-        <div class="proj-num">04</div>
+        <div class="proj-num">02</div>
         <div class="proj-icon">🥂</div>
         <div class="proj-name">Drinkupzobo</div>
         <div class="proj-role">Full Stack Developer</div>
@@ -694,7 +805,7 @@ footer { background: #0d0d0c; border-top: 0.5px solid var(--accent-border); padd
 
       <!-- KIIIBI -->
       <div class="proj-card fade">
-        <div class="proj-num">05</div>
+        <div class="proj-num">03</div>
         <div class="proj-icon">🧴</div>
         <div class="proj-name">Kiiibi</div>
         <div class="proj-role">Full Stack Developer</div>
@@ -868,7 +979,7 @@ footer { background: #0d0d0c; border-top: 0.5px solid var(--accent-border); padd
           </div>
           <div>
             <div class="ci-label">Email</div>
-            <a href="mailto:yuubbiepenandpixel@gmail.com" class="ci-val">yuubbiepenandpixel@gmail.com</a>
+            <a href="/cdn-cgi/l/email-protection#5d2428283f3f34382d38333c33392d342538311d3a303c3431733e3230" class="ci-val"><span class="__cf_email__" data-cfemail="770e020215151e12071219161913071e0f121b37101a161e1b5914181a">[email&#160;protected]</span></a>
           </div>
           <div>
             <div class="ci-label">WhatsApp</div>
@@ -915,7 +1026,7 @@ footer { background: #0d0d0c; border-top: 0.5px solid var(--accent-border); padd
   <span class="footer-copy">&copy; 2025 Ubong Emmanuel James &middot; Yubbie Pen &amp; Pixel</span>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
 }, { threshold: 0.08 });
